@@ -17,16 +17,22 @@ namespace RemoveDuplicatesFromSortedArray
         {
             // solve by going through the array and an index to track last unique, and 
             // the associated value
+
+            // corner-case: empty array
+            if (nums.Length == 0)
+            {
+                return 0;
+            }
+
             int luIndex = 0;
-            int luValue = nums[0];
 
             for (int i = 0; i < nums.Length; i++)
             {
                 // if nums[i] and last unique value don't match then update last unique value and index
-                if (nums[i] != luValue)
+                if (nums[i] != nums[luIndex])
                 {
                     luIndex++;
-                    luValue = nums[luIndex];
+                    nums[luIndex] = nums[i];
                 }
             }
 
